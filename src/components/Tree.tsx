@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Tree as TTree, TreeNode } from "../types/Tree";
+import { Tree as ITree, TreeNode } from "../types/Tree";
 import { Node } from "./Node";
 
 export const Tree: React.FC = () => {
-  const [tree, setTree] = useState<TTree>({
+  const [tree, setTree] = useState<ITree>({
     root: new TreeNode('Root', 1)
   });
 
@@ -11,8 +11,15 @@ export const Tree: React.FC = () => {
     const newNode = new TreeNode(name, parent.depth + 1);
     parent.addChild(newNode);
     
-    setTree({ ...tree });
+    setTree({...tree});
   };
+
+	const handleDelete = (parent: TreeNode, nodeToDelete: TreeNode) => {
+		parent.deleteChild(nodeToDelete);
+
+
+    setTree({...tree});
+	}
 
   const handleAddChild = (parent: TreeNode) => {
     const name = prompt('Enter node name:');
@@ -22,7 +29,7 @@ export const Tree: React.FC = () => {
   return (
     <div>
       <h1>Tree</h1>
-      <Node node={tree.root} onAddChild={handleAddChild} />
+      <Node node={tree.root} handleAddChild={handleAddChild} handleDeleteChild={handleDelete} parent={null} />
     </div>
   );
 };

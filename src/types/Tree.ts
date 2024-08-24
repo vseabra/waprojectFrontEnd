@@ -11,6 +11,12 @@ export class TreeNode {
   addChild(child: TreeNode) {
     this.children.push(child);
   }
+
+	deleteChild(child: TreeNode) {
+		const childIndex = this.children.indexOf(child);
+
+		this.children.splice(childIndex, 1);
+	}
 }
 
 export interface Tree {

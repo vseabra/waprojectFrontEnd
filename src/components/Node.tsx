@@ -2,19 +2,25 @@ import { TreeNode } from "../types/Tree";
 
 interface NodeProps {
   node: TreeNode;
-  onAddChild: (parent: TreeNode) => void;
+  parent: TreeNode | null;
+  handleAddChild: (parent: TreeNode) => void;
+  handleDeleteChild: (parent: TreeNode, nodeToDelete: TreeNode) => void;
 }
 
-export const Node: React.FC<NodeProps> = ({ node, onAddChild}) => {
+export const Node: React.FC<NodeProps> = ({ node: self, parent, handleAddChild, handleDeleteChild }) => {
 	return (
-    <div style={{ marginLeft: `${node.depth * 20}px` }}>
+    <div style={{ marginLeft: `${self.depth * 20}px` }}>
 
-      {node.name}
+      {self.name}
 
-      <button onClick={() => onAddChild(node)}>Add Child</button>
+      <button onClick={() => handleAddChild(self)}>Add Child</button>
 
-      {node.children.map((child, index) => (
-        <Node key={index} node={child} onAddChild={onAddChild} />
+      {parent && (
+        <button onClick={() => handleDeleteChild(parent, self)}>Delete</button>
+      )}
+
+      {self.children.map((child, index) => (
+        <Node key={index} node={child} handleAddChild={handleAddChild} handleDeleteChild={handleDeleteChild} parent={self} />
       ))}
 
     </div>)
