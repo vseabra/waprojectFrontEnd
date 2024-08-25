@@ -44,8 +44,14 @@ export const Tree: React.FC = () => {
   const handleDelete = (parent: TreeNode, nodeToDelete: TreeNode) => {
     if (!tree) return;
 
-    parent.deleteChild(nodeToDelete);
-    setTree({ ...tree });
+    const isConfirmed = window.confirm(
+      `Tem certeza que deseja deletar "${nodeToDelete.name}" e todos os seus filhos?`,
+    );
+
+    if (isConfirmed) {
+      parent.deleteChild(nodeToDelete);
+      setTree({ ...tree });
+    }
   };
 
   const downloadTreeAsJson = (tree: ITree) => {
@@ -104,7 +110,16 @@ export const Tree: React.FC = () => {
         <h1>{tree.root.name}</h1>
         <div className="initialized-header-actions">
           <Button onClick={() => downloadTreeAsJson(tree)}>Baixar JSON </Button>
-          <Button variant="destructive" onClick={() => setTree(null)}>
+          <Button
+            variant="destructive"
+            onClick={() => {
+              const isConfirmed = window.confirm(
+                "Tens certeza que desejas deletar a árvore?"
+              );
+
+              if (isConfirmed) setTree(null);
+            }}
+          >
             Deletar Árvore
           </Button>
         </div>
