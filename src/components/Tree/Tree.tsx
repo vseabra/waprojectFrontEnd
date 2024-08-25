@@ -121,7 +121,7 @@ export const Tree: React.FC = () => {
 
   if (!tree) {
     return (
-      <div className="uninitialized-header-container">
+      <div className="header uninitialized-header-container">
         <h1>TreeCreator</h1>
         <div className="uninitialized-header-actions">
           <Button
@@ -145,7 +145,7 @@ export const Tree: React.FC = () => {
 
   return (
     <>
-      <div className="initialized-header-container">
+      <div className="header initialized-header-container">
         <h1>{tree.root.name}</h1>
         <div className="initialized-header-actions">
           <Button onClick={() => downloadTreeAsJson(tree)}>Baixar JSON </Button>

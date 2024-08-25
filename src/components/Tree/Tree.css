@@ -1,18 +1,4 @@
 .uninitialized-header-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  h1 {
-    font-family: "Inter", sans-serif;
-    font-size: 1.5rem;
-    weight: 700;
-    background-color: #000000;
-    color: #ffffff;
-    padding: 0 0.2em;
-  }
-
   .uninitialized-header-actions {
     margin-left: auto;
     display: flex;
@@ -21,19 +7,8 @@
 }
 
 .initialized-header-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
   h1 {
-    font-family: "Inter", sans-serif;
-    font-size: 1.5rem;
     font-style: italic;
-    weight: 700;
-    background-color: #000000;
-    color: #ffffff;
-    padding: 0 0.3em;
   }
 
   .initialized-header-actions {
@@ -41,4 +16,32 @@
     display: flex;
     gap: 0.5rem;
   }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+	h1 {
+    font-family: "Inter", sans-serif;
+    font-size: 1.5rem;
+    weight: 700;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0 0.2em;
+		border-radius: 0.2rem;
+	}
+}
+
+.tree-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin-top: 1rem;
+	padding: 0.5rem;
+	border: 1px solid #000000f0;
+	border-radius: 0.2rem;
+	overflow: auto;
 }
