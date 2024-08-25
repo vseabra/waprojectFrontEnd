@@ -8,8 +8,10 @@ interface NodeProps {
 }
 
 export const Node: React.FC<NodeProps> = ({ node: self, parent, handleAddChild, handleDeleteChild }) => {
+	const identSize = 20;
+
 	return (
-    <div style={{ marginLeft: `${self.depth * 20}px` }}>
+    <div style={{ marginLeft: `${self.depth * identSize}px` }}>
 
       {self.name}
 
