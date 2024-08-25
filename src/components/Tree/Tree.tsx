@@ -15,6 +15,45 @@ import { FileInput } from "../FileInput/FileInput";
 // Styles
 import "./Tree.css";
 
+/**
+ * Tree
+ * 
+ * O componente `Tree` é um gerenciador de estrutura de árvore que permite criar, adicionar filhos, deletar
+ * e exportar árvores em formato JSON. Ele também possibilita o carregamento de árvores a partir de arquivos JSON.
+ * 
+ * **Dependências:**
+ * - React: Para manipulação de estado e renderização do componente.
+ * - TreeSerializer: Serviço para serializar e desserializar a árvore em JSON.
+ * - Button, FileInput: Componentes de UI para interações com o usuário.
+ * - Node: Componente que representa um nó da árvore.
+ * 
+ * **Estados:**
+ * - `tree` (ITree | null): Representa a árvore atual. Inicialmente é `null` até que o usuário crie ou carregue uma árvore.
+ * 
+ * **Funções:**
+ * - `initializeRoot(rootName: string)`: Inicializa a árvore com um nó raiz. Recebe o nome do nó raiz como parâmetro.
+ * - `handleAddChild(parent: TreeNode)`: Solicita ao usuário o nome de um novo nó e adiciona-o como filho do nó especificado.
+ * - `addNode(parent: TreeNode, name: string)`: Adiciona um novo nó ao nó pai especificado, verificando se já existe um nó com o mesmo nome.
+ * - `handleDelete(parent: TreeNode, nodeToDelete: TreeNode)`: Deleta um nó específico e todos os seus filhos, após confirmação do usuário.
+ * - `downloadTreeAsJson(tree: ITree)`: Exporta a árvore atual em um arquivo JSON e inicia o download.
+ * - `handleFileContent(content: string)`: Processa o conteúdo de um arquivo JSON para atualizar a árvore, com tratamento de erros.
+ * 
+ * **Renderização Condicional:**
+ * - Se `tree` for `null`, renderiza uma tela de boas-vindas com opções para criar uma nova árvore ou carregar uma árvore existente.
+ * - Se `tree` não for `null`, renderiza a árvore atual com opções para baixar a árvore como JSON ou deletá-la. Também exibe a árvore na interface com o componente `Node`.
+ * 
+ * **Estrutura HTML:**
+ * - Para árvore não inicializada:
+ *   - Exibe um título e dois botões: "Criar Nova Árvore" e "Carregar Árvore" (usando `FileInput`).
+ * - Para árvore inicializada:
+ *   - Exibe o nome da árvore atual e dois botões: "Baixar JSON" e "Deletar Árvore".
+ *   - Renderiza o componente `Node`  com o nó raiz da árvore.
+ * 
+ * **Exemplo de Uso:**
+ * ```tsx
+ * <Tree />
+ * ```
+ */
 export const Tree: React.FC = () => {
   const [tree, setTree] = useState<ITree | null>(null);
 

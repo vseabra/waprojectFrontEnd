@@ -20,6 +20,43 @@ interface NodeProps {
   handleDeleteChild: (parent: TreeNode, nodeToDelete: TreeNode) => void;
 }
 
+/**
+ * Node
+ * 
+ * O componente `Node` representa um nó em uma estrutura de árvore. Ele exibe o nome do nó e fornece 
+ * botões para adicionar e remover filhos, bem como para expandir e contrair a exibição dos filhos do nó.
+ * 
+ * **Dependências:**
+ * - React: Para manipulação de estado e renderização do componente.
+ * - Collapsible, CollapsibleContent: Componentes para exibir e ocultar o conteúdo dos filhos de forma colapsável.
+ * - Button: Componente de UI para botões de ação.
+ * - ChevronsDownUp, ChevronsUpDown: Ícones para indicar o estado colapsado/expandido.
+ * 
+ * **Props:**
+ * - `node` (TreeNode): O nó atual a ser exibido.
+ * - `parent` (TreeNode | null): O nó pai do nó atual. Pode ser `null` se o nó não tiver pai (por exemplo, se for a raiz).
+ * - `handleAddChild` (Function): Função para adicionar um filho ao nó atual.
+ * - `handleDeleteChild` (Function): Função para remover o nó atual da árvore.
+ * 
+ * **Estado Interno:**
+ * - `isOpen` (boolean): Indica se o conteúdo dos filhos está expandido (`true`) ou contraído (`false`).
+ * 
+ * **Renderização:**
+ * - O componente renderiza um `div` com uma margem esquerda proporcional à profundidade do nó na árvore (`self.depth`).
+ * - Exibe o nome do nó e inclui botões para adicionar um filho, remover o nó, e expandir/contrair a lista de filhos.
+ * - Se o nó tiver filhos, utiliza o componente `Collapsible` para mostrar/ocultar a lista de filhos. 
+ *   - A lista de filhos é renderizada recursivamente utilizando o próprio componente `Node`.
+ * 
+ * **Exemplo de Uso:**
+ * ```tsx
+ * <Node
+ *   node={node}
+ *   parent={parentNode}
+ *   handleAddChild={handleAddChild}
+ *   handleDeleteChild={handleDeleteChild}
+ * />
+ * ```
+ */
 export const Node: React.FC<NodeProps> = ({
   node: self,
   parent,
