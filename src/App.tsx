@@ -1,9 +1,13 @@
-import React from 'react';
-import './App.css';
-import { Tree } from './components/Tree';
+import React from "react";
+import "./App.css";
+import { Tree } from "./components/Tree/Tree";
 
 function App() {
-  return (<Tree/>);
+  return (
+    <div className="app-container">
+      <Tree />
+    </div>
+  );
 }
 
 export default App;

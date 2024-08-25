@@ -1,0 +1,10 @@
+.unitialized-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.unitialized-header-actions {
+  margin-left: auto;
+}
