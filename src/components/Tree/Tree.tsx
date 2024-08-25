@@ -9,6 +9,7 @@ import { Tree as ITree, TreeNode } from "../../types/Tree";
 
 // Components
 import { Node } from "../Node/Node";
+import { Button } from "../ui/button";
 import { FileInput } from "../FileInput/FileInput";
 
 // Styles
@@ -75,18 +76,18 @@ export const Tree: React.FC = () => {
 
   if (!tree) {
     return (
-      <div className="unitialized-header-container">
-        <h1>Gerador de Árvores</h1>
-        <div className="unitialized-header-actions">
-          <button
+      <div className="uninitialized-header-container">
+        <h1>TreeCreator</h1>
+        <div className="uninitialized-header-actions">
+          <Button
             className="create-button"
             onClick={() => {
               const rootName = prompt("Qual é o nome da Árvore?");
               if (rootName) initializeRoot(rootName);
             }}
           >
-            Criar nó raiz
-          </button>
+            Criar Nova Árvore
+          </Button>
           <FileInput
             onFileLoaded={handleFileContent}
             acceptedFileTypes=".json"
@@ -98,18 +99,24 @@ export const Tree: React.FC = () => {
   }
 
   return (
-    <div>
-      <h1>{tree.root.name}</h1>
-      <button onClick={() => setTree(null)}>Deletar Árvore</button>
-      <button onClick={() => downloadTreeAsJson(tree)}>
-        Download Tree as JSON
-      </button>
-      <Node
-        node={tree.root}
-        handleAddChild={handleAddChild}
-        handleDeleteChild={handleDelete}
-        parent={null}
-      />
-    </div>
+    <>
+      <div className="initialized-header-container">
+        <h1>{tree.root.name}</h1>
+        <div className="initialized-header-actions">
+          <Button onClick={() => downloadTreeAsJson(tree)}>Baixar JSON </Button>
+          <Button variant="destructive" onClick={() => setTree(null)}>
+            Deletar Árvore
+          </Button>
+        </div>
+      </div>
+      <div className="tree-container">
+        <Node
+          node={tree.root}
+          handleAddChild={handleAddChild}
+          handleDeleteChild={handleDelete}
+          parent={null}
+        />
+      </div>
+    </>
   );
 };

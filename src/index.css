@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "@fontsource/inter/index.css";
 
 @layer base {
   :root {

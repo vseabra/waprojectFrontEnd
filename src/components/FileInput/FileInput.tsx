@@ -43,7 +43,11 @@ export const FileInput: React.FC<FileInputProps> = ({
 
   return (
     <div className="file-input-container">
-      <Button className="file-input-btn" onClick={triggerFileInput}>
+      <Button
+        className="file-input-btn"
+        variant="secondary"
+        onClick={triggerFileInput}
+      >
         {buttonText}
       </Button>
       <input

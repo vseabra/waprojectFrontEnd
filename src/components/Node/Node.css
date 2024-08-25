@@ -1,0 +1,18 @@
+.node {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+
+	.node-name {
+		font-size: 1.0rem;
+		font-weight: 600;
+	}
+	.node-actions {
+		display: flex;
+		gap: 0.5rem;
+
+		button {
+			max-height: 2rem
+		}
+	}
+}
